@@ -2,7 +2,12 @@
 {% block body %}
 <html>
     <head>
-
+    <style>
+       #map {
+        height: 400px;
+        width: 100%;
+       }
+    </style>
     </head>
     <body>
         <div class="row">
@@ -77,6 +82,28 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="thumbnail">
+                <h3>Location</h3>
+                <div id="map"></div>
+                    <script>
+                      function initMap() {
+                        var uluru = {lat:{{property.lat_field}}, lng:{{property.long_field}}};
+                        var map = new google.maps.Map(document.getElementById('map'), {
+                          zoom: 9,
+                          center: uluru
+                        });
+                        var marker = new google.maps.Marker({
+                          position: uluru,
+                          map: map
+                        });
+                      }
+                    </script>
+                    <script async defer
+                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB6zPhPX_zhVaaai0gfOIr6sfdgj4YsYSU&callback=initMap">
+                    </script>
             </div>
         </div>
     </body>

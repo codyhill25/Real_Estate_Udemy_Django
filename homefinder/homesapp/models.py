@@ -29,5 +29,10 @@ class Property(models.Model):
 
     image_url = models.CharField(max_length=500)
 
+    lat_field = models.CharField(max_length=200)
+
+    long_field = models.CharField(max_length=200)
+
+
     def __str__(self):
         return self.property_name
